@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="icon" type="image/png" href="imagens/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centralize | Studio de Pilates e RPG</title>
+
+  <!-- ── SEO / COMPARTILHAMENTO EM REDES SOCIAIS ── -->
+  <meta name="description" content="Centralize Studio de Pilates e RPG, com Manuela: fisioterapeuta e especialista em Pilates e Reeducação Postural Global. Agende sua aula em Imbituba - SC." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Centralize | Studio de Pilates e RPG" />
+  <meta property="og:description" content="Fisioterapia, Pilates e RPG com a Manuela. O movimento cura! Agende sua aula em Imbituba - SC." />
+  <meta property="og:image" content="https://SEU-DOMINIO-AQUI/imagens/thumb.jpg" />
+  <meta property="og:url" content="https://SEU-DOMINIO-AQUI/" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Centralize | Studio de Pilates e RPG" />
+  <meta name="twitter:description" content="Fisioterapia, Pilates e RPG com a Manuela. O movimento cura! Agende sua aula em Imbituba - SC." />
+  <meta name="twitter:image" content="https://SEU-DOMINIO-AQUI/imagens/thumb.jpg" />
+
+  <!-- ── SECURITY HEADERS (via meta; complementam headers HTTP do host) ── -->
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.google.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── IDENTIDADE CENTRALIZE (vinho + rosa claro) ── */
+      --cream:     #FFFFFF;
+      --wine:      #8E2F5F;   /* vinho principal (nome, títulos) */
+      --wine-deep: #5C1F3F;   /* vinho escuro (texto forte) */
+      --rose:      #C9739B;   /* rosa médio */
+      --rose-lt:   #EAC0D6;   /* rosa claro (cor mais clara da ID visual) */
+      --text:      #3A1B2C;
+      --muted:     #A97C93;
+
+      --grad-hi:   #EAC0D6;
+      --grad-mid:  #C9739B;
+      --grad-low:  #9B3568;
+      --grad-deep: #6B2249;
+    }
+
+    html, body {
+      min-height: 100%;
+      overflow-x: hidden;
+      width: 100%;
+      background-color: var(--cream);
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(142,47,95,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 90% 100%, rgba(201,115,155,0.14) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fi { opacity: 0; animation: fadeDown 0.6s ease forwards; }
+    .fi-1  { animation-delay: 0.05s; }
+    .fi-3  { animation-delay: 0.25s; }
+    .fi-4  { animation-delay: 0.35s; }
+    .fi-5  { animation-delay: 0.45s; }
+    .fi-6  { animation-delay: 0.55s; }
+    .fi-7  { animation-delay: 0.65s; }
+    .fi-8  { animation-delay: 0.75s; }
+    .fi-9  { animation-delay: 0.85s; }
+    @media (prefers-reduced-motion: reduce) {
+      .fi { animation: none; opacity: 1; }
+    }
+
+    /* ── HERO (topo com identidade vinho) ── */
+    .hero-wrap {
+      width: calc(100% + 48px);
+      margin: -48px -24px 24px;
+      overflow: hidden;
+      border-radius: 0 0 28px 28px;
+      line-height: 0;
+      position: relative;
+      z-index: 0;
+      height: 220px;
+      background: linear-gradient(155deg, var(--grad-deep) 0%, var(--grad-low) 45%, var(--rose) 100%);
+    }
+    .hero-wrap video {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-wrap::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 110px;
+      background: linear-gradient(to top, var(--cream) 0%, rgba(255,255,255,0) 100%);
+      pointer-events: none;
+    }
+
+    .avatar-wrap {
+      margin-top: -188px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar-ring {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      border: 2px solid var(--wine);
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(142,47,95,0.28);
+      background: var(--cream);
+    }
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--wine);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ── HEADER TEXT ── */
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--wine);
+      text-align: center;
+      line-height: 1.2;
+      letter-spacing: 1px;
+    }
+    .name-sub {
+      display: block;
+      margin-top: 2px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .tagline {
+      margin-top: 12px;
+      font-size: clamp(6.5px, calc((100vw - 48px) / 39), 11px);
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      width: calc(100% + 48px);
+      margin-top: 4px;
+      overflow: hidden;
+      position: relative;
+      padding: 6px 0;
+    }
+    .marquee-wrap::before,
+    .marquee-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 48px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+    .marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 38s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-content { display: flex; align-items: center; white-space: nowrap; }
+    .marquee-item {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      font-style: normal;
+      text-transform: uppercase;
+      color: var(--wine-deep);
+      letter-spacing: 1.5px;
+      padding: 0 6px;
+    }
+    .marquee-sep {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--wine);
+      margin: 0 10px;
+      flex-shrink: 0;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SOBRE / QUEM SOU EU ── */
+    .about-wrap {
+      width: 100%;
+      margin-top: 32px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+    }
+    .about-photo {
+      width: 108px;
+      height: 108px;
+      flex-shrink: 0;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid var(--rose-lt);
+      background: linear-gradient(150deg, var(--grad-hi) 0%, var(--grad-mid) 45%, var(--grad-low) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(107,34,73,0.2);
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-content { flex: 1; min-width: 0; }
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      color: var(--wine);
+      margin-bottom: 6px;
+    }
+    .about-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .about-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      font-weight: 300;
+    }
+    .about-text strong { color: var(--wine); font-weight: 500; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 28px;
+    }
+    .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--rose-lt), transparent); }
+    .divider-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--wine); }
+
+    /* ── BUTTONS ── */
+    .links { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+
+    .btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      border: 1.5px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.08) 22%, rgba(255,255,255,0) 40%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .btn > * { position: relative; z-index: 2; }
+    .btn:hover  { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(107,34,73,0.35); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-icon {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn-icon svg { width: 20px; height: 20px; }
+    .btn-icon img {
+      width: 22px; height: 22px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .btn-text { flex: 1; text-align: center; min-width: 0; }
+    .btn-label {
+      font-size: clamp(7px, calc((100vw - 180px) / 20), 11px);
+      font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      display: block; margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-arrow {
+      opacity: 0.65;
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-arrow svg { width: 16px; height: 16px; }
+
+    .btn-sublabel {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(6px, calc((100vw - 180px) / 26), 9px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-disabled {
+      cursor: default;
+      opacity: 0.88;
+    }
+    .btn-disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-whatsapp,
+    .btn-horarios,
+    .btn-maps {
+      background: linear-gradient(150deg, var(--grad-hi) 0%, var(--grad-mid) 38%, var(--grad-low) 72%, var(--grad-deep) 100%);
+      border-color: var(--grad-mid);
+    }
+
+    .btn-whatsapp .btn-icon,
+    .btn-horarios .btn-icon,
+    .btn-maps .btn-icon {
+      background: rgba(255,255,255,0.22);
+    }
+    .btn-whatsapp .btn-label,
+    .btn-horarios .btn-label,
+    .btn-maps .btn-label {
+      color: rgba(255,255,255,0.85);
+    }
+    .btn-whatsapp .btn-arrow,
+    .btn-horarios .btn-arrow,
+    .btn-maps .btn-arrow {
+      color: #FFFFFF;
+    }
+
+    /* ── MINIMAPA ── */
+    .map-wrap {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1.5px solid var(--grad-mid);
+      margin-top: 14px;
+    }
+    .map-wrap iframe {
+      width: 100%; height: 200px;
+      display: block; border: none;
+      filter: saturate(0.85);
+    }
+    .map-address {
+      background: linear-gradient(150deg, var(--grad-hi) 0%, var(--grad-mid) 38%, var(--grad-low) 72%, var(--grad-deep) 100%);
+      padding: 10px 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .map-address svg { flex-shrink: 0; opacity: 0.75; }
+    .map-address span { font-size: 12px; font-weight: 300; letter-spacing: 0.5px; color: var(--cream); opacity: 0.95; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-copy {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+      opacity: 0.7;
+    }
+    .footer-credit {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+      opacity: 0.7;
+    }
+    .footer-credit a {
+      color: var(--wine);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      opacity: 1;
+      transition: color 0.18s ease;
+    }
+    .footer-credit a:hover { color: var(--rose); }
+    .social-icons { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+    .social-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rose-lt);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--wine);
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+    .social-btn svg { width: 18px; height: 18px; }
+    .social-btn:hover { background: var(--wine); color: var(--cream); border-color: var(--wine); transform: translateY(-2px); }
+
+    /* ── POPUP GENÉRICO ── */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 12, 22, 0.85);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .popup-overlay.active { display: flex; }
+
+    @keyframes popupIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes popupOut {
+      from { opacity: 1; transform: scale(1); }
+      to   { opacity: 0; transform: scale(0.94); }
+    }
+    @keyframes overlayOut {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
+    .popup-box { animation: popupIn 0.35s ease; }
+    .popup-overlay.closing { animation: overlayOut 0.3s ease forwards; }
+    .popup-overlay.closing .popup-box { animation: popupOut 0.3s ease forwards; }
+
+    .popup-box {
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+    }
+    .popup-close {
+      position: absolute;
+      top: 12px; right: 12px;
+      z-index: 10;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(30,12,22,0.45);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+    }
+
+    /* ── POPUP AGENDAMENTO ── */
+    .agenda-box {
+      padding: 34px 26px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .agenda-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .agenda-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--wine);
+      margin: 6px 0 4px;
+      line-height: 1.15;
+    }
+    .agenda-sub {
+      font-size: 13px;
+      color: var(--text);
+      opacity: 0.75;
+      font-weight: 300;
+      margin-bottom: 26px;
+    }
+    .agenda-options {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .agenda-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border: 1.5px solid var(--rose-lt);
+      border-radius: 12px;
+      background: var(--cream);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+    .agenda-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(107,34,73,0.22);
+      border-color: var(--wine);
+      background: #FBF2F7;
+    }
+    .agenda-btn:active { transform: translateY(0); }
+    .agenda-btn-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(150deg, var(--grad-hi) 0%, var(--grad-mid) 45%, var(--grad-low) 100%);
+    }
+    .agenda-btn-icon svg { width: 19px; height: 19px; }
+    .agenda-btn-text { flex: 1; min-width: 0; text-align: center; }
+    .agenda-btn-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--wine-deep);
+      display: block;
+      line-height: 1.2;
+    }
+    .agenda-btn-desc {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 300;
+      display: block;
+      margin-top: 2px;
+    }
+    .agenda-btn-arrow {
+      color: var(--wine);
+      opacity: 0.7;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .agenda-btn-arrow svg { width: 14px; height: 14px; }
+
+    /* ── POPUP HORÁRIOS ── */
+    .horarios-box {
+      padding: 34px 26px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .horarios-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .horario-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: linear-gradient(150deg, var(--grad-hi) 0%, var(--grad-mid) 38%, var(--grad-low) 100%);
+      text-align: left;
+    }
+    .horario-icon {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.22);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .horario-icon svg { width: 18px; height: 18px; }
+    .horario-day {
+      font-size: 11.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .horario-hours {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <div class="hero-wrap fi fi-1">
+    <video src="videos/hero.mp4" autoplay muted loop playsinline></video>
+  </div>
+
+  <div class="avatar-wrap fi fi-1">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <img src="imagens/logo.png" alt="Centralize Studio de Pilates e RPG" />
+      </div>
+    </div>
+  </div>
+
+  <h1 class="name fi fi-3">Centralize
+    <span class="name-sub">Studio de Pilates e RPG</span>
+  </h1>
+
+  <p class="tagline fi fi-3">O movimento cura</p>
+
+  <div class="social-icons fi fi-3" style="margin-top: 16px; margin-bottom: 0;">
+    <a href="https://www.instagram.com/studiocentralize/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram do Centralize">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=5548991479098" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp do Centralize">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/studiocentralize/?locale=pt_BR" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook do Centralize">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="divider fi fi-3" aria-hidden="true" style="margin: 20px 0 0;">
+    <span class="divider-line"></span>
+  </div>
+
+  <div class="marquee-wrap fi fi-4" aria-label="Pilates · RPG · Reeducação Postural Global · Fisioterapia · Atendimento Individualizado · Qualidade de Vida">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-item">Pilates</span><span class="marquee-sep"></span>
+        <span class="marquee-item">RPG</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Reeducação Postural</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Fisioterapia</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Atendimento Individualizado</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Qualidade de Vida</span><span class="marquee-sep"></span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span class="marquee-item">Pilates</span><span class="marquee-sep"></span>
+        <span class="marquee-item">RPG</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Reeducação Postural</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Fisioterapia</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Atendimento Individualizado</span><span class="marquee-sep"></span>
+        <span class="marquee-item">Qualidade de Vida</span><span class="marquee-sep"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider fi fi-4" aria-hidden="true" style="margin: 0 0 0;">
+    <span class="divider-line"></span>
+  </div>
+
+  <section class="about-wrap fi fi-5" aria-label="Sobre a Manuela">
+    <div class="about-photo">
+      <img src="imagens/manu.jpg" alt="Manuela, fisioterapeuta do Centralize" />
+    </div>
+    <div class="about-content">
+      <h2 class="about-title">Pode me chamar de <em>Manu</em></h2>
+      <p class="about-text">
+        Fisioterapeuta pós-graduada em Fisiologia do Exercício, formada em Pilates e Reeducação Postural Global. Com <strong>22 anos de experiência</strong>, ajudo pessoas a terem mais qualidade de vida através do movimento.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider fi fi-6" aria-hidden="true" style="margin-top: 0;">
+    <span class="divider-line"></span>
+    <span class="divider-dot"></span>
+    <span class="divider-line"></span>
+  </div>
+
+  <nav class="links fi fi-7" aria-label="Links do Centralize">
+
+    <button id="btnAbrirAgendamento" type="button" class="btn btn-whatsapp" aria-label="Agendar aula pelo WhatsApp" aria-haspopup="dialog" aria-controls="popupAgendamento">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label" style="margin-bottom: 0;">Faça seu agendamento aqui</span>
+      </span>
+      <span class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </button>
+
+    <button id="btnAbrirHorarios" type="button" class="btn btn-horarios" aria-haspopup="dialog" aria-controls="popupHorarios">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label" style="margin-bottom: 0;">Confira nossos horários</span>
+      </span>
+      <span class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </button>
+
+    <a href="https://www.google.com/maps/search/Avenida+Santa+Catarina,+1244,+sala+02,+Centro,+Imbituba+-+SC,+88780-000" target="_blank" rel="noopener noreferrer" class="btn btn-maps" aria-label="Ver studio no Google Maps">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+          <path d="M12 7.2c.7 1.2.7 2.1 0 3.3-.7-1.2-.7-2.1 0-3.3Z"/>
+          <path d="M9.6 8.4c1.2.4 1.9 1.1 2.4 2.1-1.4 0-2.3-.7-2.4-2.1Z"/>
+          <path d="M14.4 8.4c-1.2.4-1.9 1.1-2.4 2.1 1.4 0 2.3-.7 2.4-2.1Z"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label" style="margin-bottom: 0;">Conheça nosso espaço no Maps</span>
+      </span>
+      <span class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+  </nav>
+
+  <div class="map-wrap fi fi-8">
+    <iframe
+      src="https://www.google.com/maps?q=Avenida%20Santa%20Catarina%2C%201244%2C%20Centro%2C%20Imbituba%20-%20SC%2C%2088780-000&output=embed"
+      allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+      sandbox="allow-scripts allow-same-origin allow-popups"
+      title="Centralize Studio de Pilates e RPG"
+    ></iframe>
+    <div class="map-address">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+      </svg>
+      <span>Av. Santa Catarina, 1244, sala 02 - Centro, Imbituba - SC</span>
+    </div>
+  </div>
+
+  <div id="popupAgendamento" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="agendaTitle" tabindex="-1">
+    <div class="popup-box">
+      <button class="popup-close" id="popupAgendaClose" aria-label="Fechar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="agenda-box">
+        <span class="agenda-eyebrow">Centralize</span>
+        <h2 class="agenda-title" id="agendaTitle">Como podemos te ajudar?</h2>
+        <p class="agenda-sub">Escolha uma opção e continue pelo WhatsApp</p>
+
+        <div class="agenda-options">
+          <button type="button" class="agenda-btn" data-msg="Olá! Gostaria de agendar uma avaliação de Pilates.">
+            <span class="agenda-btn-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M5.5 6.5l2.8 2.8M3 13h4M5.5 19.5l2.8-2.8M12 21v-4M18.5 19.5l-2.8-2.8M21 13h-4M18.5 6.5l-2.8 2.8"/><circle cx="12" cy="13" r="3"/></svg>
+            </span>
+            <span class="agenda-btn-text">
+              <span class="agenda-btn-title">Avaliação de Pilates</span>
+              <span class="agenda-btn-desc">Conheça o método sem compromisso</span>
+            </span>
+            <span class="agenda-btn-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </button>
+
+          <button type="button" class="agenda-btn" data-msg="Olá! Gostaria de agendar uma sessão de RPG (Reeducação Postural Global).">
+            <span class="agenda-btn-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>
+            </span>
+            <span class="agenda-btn-text">
+              <span class="agenda-btn-title">Sessão de RPG</span>
+              <span class="agenda-btn-desc">Reeducação Postural Global</span>
+            </span>
+            <span class="agenda-btn-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </button>
+
+          <button type="button" class="agenda-btn" data-msg="Olá! Gostaria de falar sobre atendimento de urgência.">
+            <span class="agenda-btn-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </span>
+            <span class="agenda-btn-text">
+              <span class="agenda-btn-title">Atendimento de Urgência</span>
+              <span class="agenda-btn-desc">Fale direto com a equipe</span>
+            </span>
+            <span class="agenda-btn-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupHorarios" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="horariosTitle" tabindex="-1">
+    <div class="popup-box">
+      <button class="popup-close" id="popupHorariosClose" aria-label="Fechar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="horarios-box">
+        <span class="agenda-eyebrow">Centralize</span>
+        <h2 class="agenda-title" id="horariosTitle">Nossos Horários</h2>
+        <p class="agenda-sub">Atendimento com hora marcada</p>
+
+        <div class="horarios-list">
+          <div class="horario-item">
+            <span class="horario-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <span>
+              <span class="horario-day">Segunda à Sexta</span>
+              <span class="horario-hours">08h - 12h · 14h - 19h</span>
+            </span>
+          </div>
+          <div class="horario-item">
+            <span class="horario-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <span>
+              <span class="horario-day">Atendimento de Urgência</span>
+              <span class="horario-hours">(48) 99147-9098</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer fi fi-9">
+    <p class="footer-copy">© 2026 Centralize Studio de Pilates e RPG · Todos os direitos reservados</p>
+    <p class="footer-credit">Website desenvolvido por <a href="https://amplifying.com.br/servicos" target="_blank" rel="noopener noreferrer">AMPLIFYING</a></p>
+  </footer>
+
+</main>
+
+<script>
+  'use strict';
+
+  /* ── Popup Agendamento ── */
+  const WHATSAPP_NUMERO = '5548991479098';
+  const popupAgenda      = document.getElementById('popupAgendamento');
+  const btnAbrirAgenda   = document.getElementById('btnAbrirAgendamento');
+  const btnFecharAgenda  = document.getElementById('popupAgendaClose');
+
+  function openPopup(el) {
+    el.classList.add('active');
+    el.focus();
+  }
+  function closePopup(el) {
+    el.classList.add('closing');
+    setTimeout(function () {
+      el.classList.remove('active');
+      el.classList.remove('closing');
+    }, 300);
+  }
+
+  btnAbrirAgenda.addEventListener('click', function () { openPopup(popupAgenda); });
+  btnFecharAgenda.addEventListener('click', function () { closePopup(popupAgenda); });
+  popupAgenda.addEventListener('click', function (e) {
+    if (e.target === popupAgenda) closePopup(popupAgenda);
+  });
+  popupAgenda.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup(popupAgenda);
+  });
+
+  document.querySelectorAll('.agenda-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const msg = encodeURIComponent(btn.getAttribute('data-msg'));
+      window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + msg, '_blank', 'noopener,noreferrer');
+      closePopup(popupAgenda);
+    });
+  });
+
+  /* ── Popup Horários ── */
+  const popupHorarios     = document.getElementById('popupHorarios');
+  const btnAbrirHorarios  = document.getElementById('btnAbrirHorarios');
+  const btnFecharHorarios = document.getElementById('popupHorariosClose');
+
+  btnAbrirHorarios.addEventListener('click', function () { openPopup(popupHorarios); });
+  btnFecharHorarios.addEventListener('click', function () { closePopup(popupHorarios); });
+  popupHorarios.addEventListener('click', function (e) {
+    if (e.target === popupHorarios) closePopup(popupHorarios);
+  });
+  popupHorarios.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup(popupHorarios);
+  });
+</script>
+</body>
+</html>
